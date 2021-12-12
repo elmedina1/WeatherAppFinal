@@ -1,5 +1,6 @@
 body {
   font-family: 'Oswald', sans-serif;
+  background: linear-gradient(to top, #e8198b 0%, #c7eafd 100%);
 }
 sup {
   top: -1em;
@@ -7,11 +8,7 @@ sup {
 #container {
   width: 1000px;
   margin-top: 20px;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgba(216, 241, 230, 0.46) 0.1%,
-    rgba(233, 226, 226, 0.28) 90.1%
-  );
+
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -23,6 +20,11 @@ sup {
 #description {
   text-transform: capitalize;
 }
+
+#image {
+  background: transparent;
+}
+
 a {
   color: black;
   font-size: 20px;
