@@ -33,6 +33,7 @@ a {
 }
 a:active {
   color: #385170;
+  cursor: none;
 }
 
 a:hover {

@@ -35,8 +35,11 @@ function displayTemperature(response) {
   let desc = document.querySelector('#description');
   let date = document.querySelector('#date');
   let image = document.querySelector('#image');
+
+  celTemp = response.data.main.temp;
+
   cityState.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  temp.innerHTML = Math.round(response.data.main.temp);
+  temp.innerHTML = Math.round(celTemp);
   desc.innerHTML = `${response.data.weather[0].description}`;
   hum.innerHTML = `Humidity: ${response.data.main.humidity}`;
   speed.innerHTML = `Wind Speed: ${response.data.wind.speed}`;
@@ -65,5 +68,27 @@ function handleSubmit(event) {
   search(city.value);
 }
 
+function showFarenheitTemp(event) {
+  event.preventDefault();
+
+  let temp = document.querySelector('#temperature');
+  let fahTemp = Math.round((celTemp * 9) / 5) + 32;
+  temp.innerHTML = fahTemp;
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temp = document.querySelector('#temperature');
+  temp.innerHTML = Math.round(celTemp);
+}
+
+let celTemp = null;
+
 let form = document.querySelector('#search');
 form.addEventListener('submit', handleSubmit);
+
+let farenheit_link = document.querySelector('#farenheit');
+farenheit_link.addEventListener('click', showFarenheitTemp);
+
+let celsius_link = document.querySelector('#celsius');
+celsius_link.addEventListener('click', showCelsiusTemp);
