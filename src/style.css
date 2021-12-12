@@ -1,14 +1,39 @@
 body {
   font-family: 'Oswald', sans-serif;
 }
-
+sup {
+  top: -1em;
+}
 #container {
-  width: 800px;
+  width: 1000px;
   margin-top: 20px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(216, 241, 230, 0.46) 0.1%,
+    rgba(233, 226, 226, 0.28) 90.1%
+  );
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #top-card {
   background-image: url('autumn.jpg');
+}
+
+#description {
+  text-transform: capitalize;
+}
+a {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+a:active {
+  color: #385170;
+}
+
+a:hover {
+  color: #38598b;
 }
 .main-card {
   margin-bottom: 10px;
@@ -19,4 +44,21 @@ body {
   justify-content: center;
   width: 68%;
   margin: 0 auto;
+}
+
+.li-font {
+  font-size: 12px;
+  border-style: none;
+  padding-bottom: 0px;
+}
+
+.next-days {
+  text-align: center;
+}
+
+.footer,
+.footer a {
+  font-size: 10px;
+  text-align: center;
+  padding-top: 15px;
 }
