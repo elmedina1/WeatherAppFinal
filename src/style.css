@@ -1,0 +1,22 @@
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+#container {
+  width: 800px;
+  margin-top: 20px;
+}
+
+#top-card {
+  background-image: url('autumn.jpg');
+}
+.main-card {
+  margin-bottom: 10px;
+  height: 300px;
+}
+
+.card-row {
+  justify-content: center;
+  width: 68%;
+  margin: 0 auto;
+}
