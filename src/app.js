@@ -82,6 +82,50 @@ function showCelsiusTemp(event) {
   temp.innerHTML = Math.round(celTemp);
 }
 
+function displayForecast() {
+  let futureForecast = document.querySelector('#forecast');
+  let forecastHtml = '<div class="row row-cols-1 row-cols-md-5 g-4 card-row">';
+  let days = [
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+  ];
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+          <div class="col">
+            <div class="card">
+              <div class="card-body next-days">
+                <h5 class="card-title">${day}</h5>
+                <h2>21</h2>
+                <ul class="list-group li-font">
+                  <li class="list-group-item li-font">
+                    <i class="fas fa-arrow-up"></i>23
+                    <i class="fas fa-arrow-down min-temp"></i>10
+                  </li>
+                  <li class="list-group-item li-font">
+                    <i class="fas fa-tint"></i> 21%
+                  </li>
+                  <li class="list-group-item li-font">
+                    <i class="fas fa-wind"></i> 19km/h
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>`;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+
+  futureForecast.innerHTML = forecastHtml;
+}
+
 let celTemp = null;
 
 let form = document.querySelector('#search');
@@ -92,3 +136,5 @@ farenheit_link.addEventListener('click', showFarenheitTemp);
 
 let celsius_link = document.querySelector('#celsius');
 celsius_link.addEventListener('click', showCelsiusTemp);
+
+displayForecast();
