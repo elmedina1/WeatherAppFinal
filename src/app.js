@@ -24,7 +24,13 @@ function formatDate(timestamp) {
   return `Last updated: ${days[day]} ${hours}:${minutes}`;
   //calculate the date
 }
-
+function getForecast(coordinates) {
+  console.log('coor' + coordinates);
+  let apiKey = '860125333e4516777dadc25699e05462';
+  let apiUrl1 = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl1);
+  axios.get(apiUrl1).then(displayForecast);
+}
 function displayTemperature(response) {
   console.log(response);
 
@@ -50,6 +56,8 @@ function displayTemperature(response) {
   );
 
   image.setAttribute('alt', `${response.data.weather[0].description}`);
+
+  getForecast(response.data.coord);
 }
 
 //console.log(apiKey);
@@ -82,18 +90,11 @@ function showCelsiusTemp(event) {
   temp.innerHTML = Math.round(celTemp);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let futureForecast = document.querySelector('#forecast');
   let forecastHtml = '<div class="row row-cols-1 row-cols-md-5 g-4 card-row">';
-  let days = [
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-    'Monday',
-    'Tuesday',
-  ];
+  let days = ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   days.forEach(function (day) {
     forecastHtml =
@@ -136,5 +137,3 @@ farenheit_link.addEventListener('click', showFarenheitTemp);
 
 let celsius_link = document.querySelector('#celsius');
 celsius_link.addEventListener('click', showCelsiusTemp);
-
-displayForecast();
