@@ -24,6 +24,22 @@ function formatDate(timestamp) {
   return `Last updated: ${days[day]} ${hours}:${minutes}`;
   //calculate the date
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  var days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+
+  return days[day];
+}
 function getForecast(coordinates) {
   console.log('coor' + coordinates);
   let apiKey = '860125333e4516777dadc25699e05462';
@@ -92,34 +108,49 @@ function showCelsiusTemp(event) {
 
 function displayForecast(response) {
   console.log(response.data.daily);
+  let forecast = response.data.daily;
   let futureForecast = document.querySelector('#forecast');
   let forecastHtml = '<div class="row row-cols-1 row-cols-md-5 g-4 card-row">';
-  let days = ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
           <div class="col">
             <div class="card">
               <div class="card-body next-days">
-                <h5 class="card-title">${day}</h5>
-                <h2>21</h2>
+                <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
+                <h2>${Math.round(forecastDay.temp.day)}</h2>
+                <img src>
+<img
+            id="image_future"
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }.png"
+            alt="weather image"
+          />
+
                 <ul class="list-group li-font">
                   <li class="list-group-item li-font">
-                    <i class="fas fa-arrow-up"></i>23
-                    <i class="fas fa-arrow-down min-temp"></i>10
+                    <i class="fas fa-arrow-up"></i>${Math.round(
+                      forecastDay.temp.max
+                    )}℃
+                    <i class="fas fa-arrow-down min-temp"></i>${Math.round(
+                      forecastDay.temp.min
+                    )}℃
                   </li>
                   <li class="list-group-item li-font">
-                    <i class="fas fa-tint"></i> 21%
+                    <i class="fas fa-tint"></i> ${forecastDay.humidity}%
                   </li>
                   <li class="list-group-item li-font">
-                    <i class="fas fa-wind"></i> 19km/h
+                    <i class="fas fa-wind"></i> ${forecastDay.wind_speed}km/h
                   </li>
                 </ul>
               </div>
             </div>
           </div>`;
+    }
   });
 
   forecastHtml = forecastHtml + `</div>`;
