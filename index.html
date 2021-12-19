@@ -25,7 +25,7 @@
   <body>
     <div class="container" id="container">
       <!--first row: input and search-->
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="row-one">
         <div class="col-8">
           <form id="search">
             <div class="input-group mb-3">
@@ -37,7 +37,11 @@
                 aria-describedby="button-addon2"
                 autocomplete="off"
               />
-              <button class="btn btn-primary" type="button" id="button-addon2">
+              <button
+                class="btn btn-main-search"
+                type="button"
+                id="button-addon2"
+              >
                 Search
               </button>
             </div>
@@ -45,24 +49,24 @@
         </div>
       </div>
       <!--Second row: Current time -->
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="row-two">
         <div class="col-3">
-          <h2 id="city-state">City, State</h2>
+          <h2 id="city-state">Please, search for the city.</h2>
 
           <ul class="list-group">
-            <li class="list-group-item li-font"><span id="date">Date</span></li>
+            <li class="list-group-item li-font"><span id="date"></span></li>
 
             <li class="list-group-item li-font">
-              <span id="description">Description</span>
+              <span id="description"></span>
             </li>
           </ul>
 
           <ul class="list-group">
             <li class="list-group-item li-font">
-              <span id="hum">Humidity</span>%
+              <span id="hum"></span>
             </li>
             <li class="list-group-item li-font">
-              <span id="speed">Wind Speed</span>km/h
+              <span id="speed"></span>
             </li>
           </ul>
         </div>
@@ -73,19 +77,15 @@
         >
           <img
             id="image"
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png"
             alt="weather image"
-          /><span id="temperature"> 21</span
-          ><sup
-            ><a href="#" id="celsius">℃ |</a>
-            <a href="#" id="farenheit">℉</a>
-          </sup>
+          /><span id="temperature"></span>
         </div>
       </div>
       <!--forecast-->
       <div id="forecast"></div>
       <!--footer-->
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="row-three">
         <p class="footer">
           <a href="http://" target="_blank" rel="noopener noreferrer"
             >Open source project</a
