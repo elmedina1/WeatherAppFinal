@@ -121,7 +121,7 @@ function displayForecast(response) {
             <div class="card">
               <div class="card-body next-days">
                 <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
-                <h2>${Math.round(forecastDay.temp.day)}</h2>
+                <h2>${Math.round(forecastDay.temp.day)}℃</h2>
                 <img src>
 <img
             id="image_future"
